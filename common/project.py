@@ -26,6 +26,7 @@
 
 import json
 import os
+from typing import Any
 
 import jsonschema
 import yaml
@@ -63,7 +64,7 @@ class ProjectType(QObject):
         def origin(self, origin: dict):
             self.__data = origin
 
-        def get(self, path: str, default=None):
+        def get(self, path: str, default=None) -> Any:
             item = self.__data
             keys = path.split("/")
             for key in keys:
@@ -406,8 +407,10 @@ class ProjectType(QObject):
                 and cfg is not None
                 and len(cfg) > 0
             ):
-                modules.add(name)
-        self.modules = list(modules)
+                ip = IP.projectIps().get(name)
+                if ip and ip.activated:
+                    modules.add(name)
+        self.modules = sorted(modules)
 
 
 class Project(QObject):

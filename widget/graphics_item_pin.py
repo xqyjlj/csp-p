@@ -370,6 +370,7 @@ class GraphicsItemPin(QGraphicsObject):
             if mode in ip.pinModes:
                 ip_modes = ip.pinModes[mode]
             else:
+                logger.error(f"invalid mode: {mode}")
                 return
 
             for key, info in ip_modes.items():
