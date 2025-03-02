@@ -214,3 +214,471 @@ pinModes:
         - geehy.gpio_output_pp
       default: geehy.gpio_output_pp
   System: {}
+pins:
+  PA0:
+    TIM2:CH1:
+      TIM2_REMAP0:
+        default: true
+      TIM2_REMAP2:
+        default: false
+    TIM2:ETR:
+      TIM2_REMAP0:
+        default: true
+      TIM2_REMAP2:
+        default: false
+    USART2:CTS:
+      USART2_REMAP0:
+        default: true
+  PA1:
+    TIM2:CH2:
+      TIM2_REMAP0:
+        default: true
+      TIM2_REMAP2:
+        default: false
+    USART2:RTS:
+      USART2_REMAP0:
+        default: true
+  PA10:
+    TIM1:CH3:
+      TIM1_REMAP0:
+        default: true
+      TIM1_REMAP1:
+        default: false
+    USART1:RX:
+      USART1_REMAP0:
+        default: true
+  PA11:
+    CAN:RX:
+      CAN_REMAP0:
+        default: true
+    TIM1:CH4:
+      TIM1_REMAP0:
+        default: true
+      TIM1_REMAP1:
+        default: false
+  PA12:
+    CAN:TX:
+      CAN_REMAP0:
+        default: true
+    TIM1:ETR:
+      TIM1_REMAP0:
+        default: true
+      TIM1_REMAP1:
+        default: false
+  PA15:
+    I2S3:WS:
+      I2S3_REMAP0:
+        default: true
+    SPI1:NSS:
+      SPI1_REMAP1:
+        default: false
+    SPI3:NSS:
+      SPI3_REMAP0:
+        default: true
+    TIM2:CH1:
+      TIM2_REMAP1:
+        default: false
+      TIM2_REMAP3:
+        default: false
+    TIM2:ETR:
+      TIM2_REMAP1:
+        default: false
+      TIM2_REMAP3:
+        default: false
+  PA2:
+    TIM2:CH3:
+      TIM2_REMAP0:
+        default: true
+      TIM2_REMAP1:
+        default: false
+    TIM9:CH1:
+      TIM9_REMAP0:
+        default: true
+    USART2:TX:
+      USART2_REMAP0:
+        default: true
+  PA3:
+    TIM2:CH4:
+      TIM2_REMAP0:
+        default: true
+      TIM2_REMAP1:
+        default: false
+    TIM9:CH2:
+      TIM9_REMAP0:
+        default: true
+    USART2:RX:
+      USART2_REMAP0:
+        default: true
+  PA4:
+    I2S3:WS:
+      I2S3_REMAP1:
+        default: false
+    SPI1:NSS:
+      SPI1_REMAP0:
+        default: true
+    SPI3:NSS:
+      SPI3_REMAP1:
+        default: false
+    USART2:CK:
+      USART2_REMAP0:
+        default: true
+  PA5:
+    SPI1:SCK:
+      SPI1_REMAP0:
+        default: true
+  PA6:
+    SPI1:MISO:
+      SPI1_REMAP0:
+        default: true
+    TIM13:CH1:
+      TIM13_REMAP0:
+        default: true
+    TIM1:BKIN:
+      TIM1_REMAP1:
+        default: false
+    TIM3:CH1:
+      TIM3_REMAP0:
+        default: true
+  PA7:
+    SPI1:MOSI:
+      SPI1_REMAP0:
+        default: true
+    TIM14:CH1:
+      TIM14_REMAP0:
+        default: true
+    TIM1:CH1N:
+      TIM1_REMAP1:
+        default: false
+    TIM3:CH2:
+      TIM3_REMAP0:
+        default: true
+  PA8:
+    TIM1:CH1:
+      TIM1_REMAP0:
+        default: true
+      TIM1_REMAP1:
+        default: false
+  PA9:
+    TIM1:CH2:
+      TIM1_REMAP0:
+        default: true
+      TIM1_REMAP1:
+        default: false
+    USART1:TX:
+      USART1_REMAP0:
+        default: true
+  PB0:
+    TIM1:CH2N:
+      TIM1_REMAP1:
+        default: false
+    TIM3:CH3:
+      TIM3_REMAP0:
+        default: true
+      TIM3_REMAP1:
+        default: false
+  PB1:
+    TIM1:CH3N:
+      TIM1_REMAP1:
+        default: false
+    TIM3:CH4:
+      TIM3_REMAP0:
+        default: true
+      TIM3_REMAP1:
+        default: false
+  PB10:
+    TIM2:CH3:
+      TIM2_REMAP2:
+        default: false
+      TIM2_REMAP3:
+        default: false
+    USART3:TX:
+      USART3_REMAP0:
+        default: true
+  PB11:
+    TIM2:CH4:
+      TIM2_REMAP2:
+        default: false
+      TIM2_REMAP3:
+        default: false
+    USART3:RX:
+      USART3_REMAP0:
+        default: true
+  PB12:
+    TIM1:BKIN:
+      TIM1_REMAP0:
+        default: true
+    USART3:CK:
+      USART3_REMAP0:
+        default: true
+  PB13:
+    TIM1:CH1N:
+      TIM1_REMAP0:
+        default: true
+    USART3:CTS:
+      USART3_REMAP0:
+        default: true
+      USART3_REMAP1:
+        default: false
+  PB14:
+    TIM1:CH2N:
+      TIM1_REMAP0:
+        default: true
+    USART3:RTS:
+      USART3_REMAP0:
+        default: true
+      USART3_REMAP1:
+        default: false
+  PB15:
+    TIM1:CH3N:
+      TIM1_REMAP0:
+        default: true
+  PB3:
+    I2S3:CK:
+      I2S3_REMAP0:
+        default: true
+    SPI1:SCK:
+      SPI1_REMAP1:
+        default: false
+    SPI3:SCK:
+      SPI3_REMAP0:
+        default: true
+    TIM2:CH2:
+      TIM2_REMAP1:
+        default: false
+      TIM2_REMAP3:
+        default: false
+  PB4:
+    SPI1:MISO:
+      SPI1_REMAP1:
+        default: false
+    SPI3:MISO:
+      SPI3_REMAP0:
+        default: true
+    TIM3:CH1:
+      TIM3_REMAP1:
+        default: false
+  PB5:
+    I2S3:SD:
+      I2S3_REMAP0:
+        default: true
+    SPI1:MOSI:
+      SPI1_REMAP1:
+        default: false
+    SPI3:MOSI:
+      SPI3_REMAP0:
+        default: true
+    TIM3:CH2:
+      TIM3_REMAP1:
+        default: false
+  PB6:
+    I2C1:SCL:
+      I2C1_REMAP0:
+        default: true
+    TIM4:CH1:
+      TIM4_REMAP0:
+        default: true
+    USART1:TX:
+      USART1_REMAP1:
+        default: false
+  PB7:
+    I2C1:SDA:
+      I2C1_REMAP0:
+        default: true
+    TIM4:CH2:
+      TIM4_REMAP0:
+        default: true
+    USART1:RX:
+      USART1_REMAP1:
+        default: false
+  PB8:
+    CAN:RX:
+      CAN_REMAP1:
+        default: false
+    I2C1:SCL:
+      I2C1_REMAP1:
+        default: false
+    TIM10:CH1:
+      TIM10_REMAP0:
+        default: true
+    TIM4:CH3:
+      TIM4_REMAP0:
+        default: true
+  PB9:
+    CAN:TX:
+      CAN_REMAP1:
+        default: false
+    I2C1:SDA:
+      I2C1_REMAP1:
+        default: false
+    TIM11:CH1:
+      TIM11_REMAP0:
+        default: true
+    TIM4:CH4:
+      TIM4_REMAP0:
+        default: true
+  PC10:
+    I2S3:CK:
+      I2S3_REMAP1:
+        default: false
+    SPI3:SCK:
+      SPI3_REMAP1:
+        default: false
+    USART3:TX:
+      USART3_REMAP1:
+        default: false
+  PC11:
+    SPI3:MISO:
+      SPI3_REMAP1:
+        default: false
+    USART3:RX:
+      USART3_REMAP1:
+        default: false
+  PC12:
+    I2S3:SD:
+      I2S3_REMAP1:
+        default: false
+    SPI3:MOSI:
+      SPI3_REMAP1:
+        default: false
+    USART3:CK:
+      USART3_REMAP1:
+        default: false
+  PC6:
+    TIM3:CH1:
+      TIM3_REMAP2:
+        default: false
+  PC7:
+    TIM3:CH2:
+      TIM3_REMAP2:
+        default: false
+  PC8:
+    TIM3:CH3:
+      TIM3_REMAP2:
+        default: false
+  PC9:
+    TIM3:CH4:
+      TIM3_REMAP2:
+        default: false
+  PD0:
+    CAN:RX:
+      CAN_REMAP2:
+        default: false
+  PD1:
+    CAN:TX:
+      CAN_REMAP2:
+        default: false
+  PD10:
+    USART3:CK:
+      USART3_REMAP2:
+        default: false
+  PD11:
+    USART3:CTS:
+      USART3_REMAP2:
+        default: false
+  PD12:
+    TIM4:CH1:
+      TIM4_REMAP1:
+        default: false
+    USART3:RTS:
+      USART3_REMAP2:
+        default: false
+  PD13:
+    TIM4:CH2:
+      TIM4_REMAP1:
+        default: false
+  PD14:
+    TIM4:CH3:
+      TIM4_REMAP1:
+        default: false
+  PD15:
+    TIM4:CH4:
+      TIM4_REMAP1:
+        default: false
+  PD3:
+    USART2:CTS:
+      USART2_REMAP1:
+        default: false
+  PD4:
+    USART2:RTS:
+      USART2_REMAP1:
+        default: false
+  PD5:
+    USART2:TX:
+      USART2_REMAP1:
+        default: false
+  PD6:
+    USART2:RX:
+      USART2_REMAP1:
+        default: false
+  PD7:
+    USART2:CK:
+      USART2_REMAP1:
+        default: false
+  PD8:
+    USART3:TX:
+      USART3_REMAP2:
+        default: false
+  PD9:
+    USART3:RX:
+      USART3_REMAP2:
+        default: false
+  PE10:
+    TIM1:CH2N:
+      TIM1_REMAP2:
+        default: false
+  PE11:
+    TIM1:CH2:
+      TIM1_REMAP2:
+        default: false
+  PE12:
+    TIM1:CH3N:
+      TIM1_REMAP2:
+        default: false
+  PE13:
+    TIM1:CH3:
+      TIM1_REMAP2:
+        default: false
+  PE14:
+    TIM1:CH4:
+      TIM1_REMAP2:
+        default: false
+  PE15:
+    TIM1:BKIN:
+      TIM1_REMAP2:
+        default: false
+  PE5:
+    TIM9:CH1:
+      TIM9_REMAP1:
+        default: false
+  PE6:
+    TIM9:CH2:
+      TIM9_REMAP1:
+        default: false
+  PE7:
+    TIM1:ETR:
+      TIM1_REMAP2:
+        default: false
+  PE8:
+    TIM1:CH1N:
+      TIM1_REMAP2:
+        default: false
+  PE9:
+    TIM1:CH1:
+      TIM1_REMAP2:
+        default: false
+  PF6:
+    TIM10:CH1:
+      TIM10_REMAP1:
+        default: false
+  PF7:
+    TIM11:CH1:
+      TIM11_REMAP1:
+        default: false
+  PF8:
+    TIM13:CH1:
+      TIM13_REMAP1:
+        default: false
+  PF9:
+    TIM14:CH1:
+      TIM14_REMAP1:
+        default: false

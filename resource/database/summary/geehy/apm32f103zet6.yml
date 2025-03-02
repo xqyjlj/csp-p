@@ -109,10 +109,12 @@ modules:
       description:
         en: ""
         zh_CN: 通用异步收发器4
+      ip: apm32f103_uart
     UART5:
       description:
         en: ""
         zh_CN: 通用异步收发器5
+      ip: apm32f103_uart
     USART1:
       description:
         en: ""
