@@ -1,5 +1,10 @@
 name: APM32F103ZET6
 clockTree: APM32F103
+core: ARM Cortex-M7
+frequency: 96
+io: 112
+series: APM32F1
+line: APM32F103
 vendor: Geehy
 vendorUrl:
   en: https://global.geehy.com

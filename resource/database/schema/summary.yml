@@ -36,7 +36,8 @@ properties:
   io:
     type: integer
   die:
-    type: integer
+    type: string
+    minLength: 1
   frequency:
     type: integer
   series:
