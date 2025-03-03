@@ -127,9 +127,9 @@ properties:
       visible:
         type: boolean
       max:
-        type: number
+        type: [number, string]
       min:
-        type: number
+        type: [number, string]
     required: [type, description]
   $language$:
     type: object

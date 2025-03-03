@@ -1,0 +1,127 @@
+# Licensed under the GNU General Public License v. 3 (the "License")
+# You may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.gnu.org/licenses/gpl-3.0.html
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Copyright (C) 2025-2025 csplink<https://csplink.top/>
+#
+# @author      csplink
+# @file        apm32f103_wwdt.yml
+#
+# Change Logs:
+# Date           Author       Notes
+# ------------   ----------   -----------------------------------------------
+# 2025-03-03     csplink      initial version
+#
+
+parameters:
+  geehy.wwdt_prescaler_t:
+    type: enum
+    values:
+      geehy.wwdt_prescaler_wwdg_prescaler_1:
+        comment:
+          zh_CN: "1"
+          en: "1"
+      geehy.wwdt_prescaler_wwdg_prescaler_2:
+        comment:
+          zh_CN: "2"
+          en: "2"
+      geehy.wwdt_prescaler_wwdg_prescaler_4:
+        comment:
+          zh_CN: "4"
+          en: "4"
+      geehy.wwdt_prescaler_wwdg_prescaler_8:
+        comment:
+          zh_CN: "8"
+          en: "8"
+    default: geehy.wwdt_prescaler_wwdg_prescaler_1
+    display:
+      zh_CN: WWDG counter clock prescaler
+      en: WWDG counter clock prescaler
+    description:
+      zh_CN: WWDG counter clock prescaler
+      en: WWDG counter clock prescaler
+    visible: true
+    readonly: false
+  geehy.wwdt_window_t:
+    type: integer
+    default: 64
+    max: 127
+    min: 64
+    display:
+      zh_CN: WWDG window value
+      en: WWDG window value
+    description:
+      zh_CN: WWDG window value
+      en: WWDG window value
+    visible: true
+    readonly: false
+  geehy.wwdt_counter_t:
+    type: integer
+    default: 64
+    max: 127
+    min: ${INSTANCE}.geehy.wwdt_window_t
+    display:
+      zh_CN: WWDG free-running downcounter value
+      en: WWDG free-running downcounter value
+    description:
+      zh_CN: WWDG free-running downcounter value
+      en: WWDG free-running downcounter value
+    visible: true
+    readonly: false
+  geehy.wwdt_ewi_mode_t:
+    type: enum
+    values:
+      geehy.wwdt_ewi_mode_wwdg_ewi_disable:
+        comment:
+          zh_CN: Disable
+          en: Disable
+      geehy.wwdt_ewi_mode_wwdg_ewi_enable:
+        comment:
+          zh_CN: Enable
+          en: Enable
+    default: geehy.wwdt_ewi_mode_wwdg_ewi_disable
+    display:
+      zh_CN: Early wakeup interrupt
+      en: Early wakeup interrupt
+    description:
+      zh_CN: Early wakeup interrupt
+      en: Early wakeup interrupt
+    visible: true
+    readonly: false
+  geehy.wwdt_control_wwdg_state_t:
+    type: enum
+    values:
+      geehy.wwdt_control_wwdg_state_disable:
+        comment:
+          zh_CN: 关闭
+          en: Disable
+      geehy.wwdt_control_wwdg_state_wwdg_activate:
+        comment:
+          zh_CN: Activated
+          en: Activated
+    default: geehy.wwdt_control_wwdg_state_disable
+    display:
+      zh_CN: WWDG_State
+      en: WWDG_State
+    description:
+      zh_CN: WWDG_State
+      en: WWDG_State
+    visible: true
+    readonly: false
+controls:
+  geehy.wwdt_control_wwdg_state_t: {}
+modes:
+  - condition: (${INSTANCE}.geehy.wwdt_control_wwdg_state_t == 'geehy.wwdt_control_wwdg_state_wwdg_activate')
+    content:
+      geehy.wwdt_prescaler_t: {}
+      geehy.wwdt_window_t: {}
+      geehy.wwdt_counter_t: {}
+activated: (${INSTANCE}.geehy.wwdt_control_wwdg_state_t != 'geehy.wwdt_control_wwdg_state_disable')

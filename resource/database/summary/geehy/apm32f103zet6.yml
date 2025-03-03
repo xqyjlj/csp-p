@@ -72,6 +72,7 @@ modules:
       description:
         en: ""
         zh_CN: 循环冗余校验计算单元
+      ip: apm32f103_crc
   Connectivity:
     CAN:
       description:
@@ -157,6 +158,7 @@ modules:
       description:
         en: ""
         zh_CN: 独立看门狗定时器
+      ip: apm32f103_iwdt
     NVIC:
       description:
         en: ""
@@ -174,6 +176,7 @@ modules:
       description:
         en: ""
         zh_CN: 窗口看门狗定时器
+      ip: apm32f103_wwdt
   Timers:
     RTC:
       description:

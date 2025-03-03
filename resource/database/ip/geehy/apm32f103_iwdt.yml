@@ -1,0 +1,105 @@
+# Licensed under the GNU General Public License v. 3 (the "License")
+# You may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.gnu.org/licenses/gpl-3.0.html
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Copyright (C) 2025-2025 csplink<https://csplink.top/>
+#
+# @author      csplink
+# @file        apm32f103_iwdt.yml
+#
+# Change Logs:
+# Date           Author       Notes
+# ------------   ----------   -----------------------------------------------
+# 2025-03-03     csplink      initial version
+#
+
+parameters:
+  geehy.iwdt_prescaler_t:
+    type: enum
+    values:
+      geehy.iwdt_prescaler_iwdg_prescaler_4:
+        comment:
+          zh_CN: "4"
+          en: "4"
+      geehy.iwdt_prescaler_iwdg_prescaler_8:
+        comment:
+          zh_CN: "8"
+          en: "8"
+      geehy.iwdt_prescaler_iwdg_prescaler_16:
+        comment:
+          zh_CN: "16"
+          en: "16"
+      geehy.iwdt_prescaler_iwdg_prescaler_32:
+        comment:
+          zh_CN: "32"
+          en: "32"
+      geehy.iwdt_prescaler_iwdg_prescaler_64:
+        comment:
+          zh_CN: "64"
+          en: "64"
+      geehy.iwdt_prescaler_iwdg_prescaler_128:
+        comment:
+          zh_CN: "128"
+          en: "128"
+      geehy.iwdt_prescaler_iwdg_prescaler_256:
+        comment:
+          zh_CN: "256"
+          en: "256"
+    default: geehy.iwdt_prescaler_iwdg_prescaler_4
+    display:
+      zh_CN: IWDG counter clock prescaler
+      en: IWDG counter clock prescaler
+    description:
+      zh_CN: IWDG counter clock prescaler
+      en: IWDG counter clock prescaler
+    visible: true
+    readonly: false
+  geehy.iwdt_reload_t:
+    type: integer
+    default: 4095
+    max: 4095
+    min: 0
+    display:
+      zh_CN: IWDG down-counter reload value
+      en: IWDG down-counter reload value
+    description:
+      zh_CN: IWDG down-counter reload value
+      en: IWDG down-counter reload value
+    visible: true
+    readonly: false
+  geehy.iwdt_control_iwdg_state_t:
+    type: enum
+    values:
+      geehy.iwdt_control_iwdg_state_disable:
+        comment:
+          zh_CN: 关闭
+          en: Disable
+      geehy.iwdt_control_iwdg_state_iwdg_activate:
+        comment:
+          zh_CN: Activated
+          en: Activated
+    default: geehy.iwdt_control_iwdg_state_disable
+    display:
+      zh_CN: IWDG_State
+      en: IWDG_State
+    description:
+      zh_CN: IWDG_State
+      en: IWDG_State
+    visible: true
+    readonly: false
+controls:
+  geehy.iwdt_control_iwdg_state_t: {}
+modes:
+  - condition: (${INSTANCE}.geehy.iwdt_control_iwdg_state_t == 'geehy.iwdt_control_iwdg_state_iwdg_activate')
+    content:
+      geehy.iwdt_prescaler_t: {}
+      geehy.iwdt_reload_t: {}
+activated: (${INSTANCE}.geehy.iwdt_control_iwdg_state_t != 'geehy.iwdt_control_iwdg_state_disable')
