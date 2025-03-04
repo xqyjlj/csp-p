@@ -186,7 +186,6 @@ required:
   - clockTree
   - core
   - io
-  - die
   - frequency
   - series
   - line
