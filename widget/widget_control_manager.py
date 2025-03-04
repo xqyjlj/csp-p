@@ -81,6 +81,7 @@ class WidgetControlManager(WidgetBaseManager):
                 pins = SUMMARY.findPinBySignal(signal)
                 if len(pins) > 0:
                     pin = pins[0]
+                    print(PROJECT.pinIp().findPinGroups(pin, signal))
                     functionKey = f"pin/{pin}/function"
                     lockedKey = f"pin/{pin}/locked"
                     modeKey = f"pin/{pin}/mode"

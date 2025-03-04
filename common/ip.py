@@ -521,7 +521,7 @@ class IpType(QObject):
                     signal = {}
                     for groupName, unit in groupItem.items():
                         signal[groupName] = IpType.PinGroupUnitType(unit, self)
-                    pin[signalName] = {}
+                    pin[signalName] = signal
                 self.__pinGroups[pinName] = pin
         return self.__pinGroups
 
@@ -560,6 +560,13 @@ class IpType(QObject):
 
     def instance(self) -> str:
         return self.__instance
+
+    def findPinGroups(self, name: str, signal: str) -> dict[str, PinGroupUnitType]:
+        results = {}
+        if name in self.pinGroups:
+            if signal in self.pinGroups[name]:
+                results = self.pinGroups[name][signal]
+        return results
 
     def _parametersConditions(self) -> dict[str, list[IpType.ConditionUnitType]]:
         return self.__parametersConditions

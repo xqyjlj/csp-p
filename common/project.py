@@ -33,7 +33,7 @@ import yaml
 from PySide6.QtCore import Signal, QObject
 from loguru import logger
 
-from .ip import IP
+from .ip import IP, IpType
 from .package import PACKAGE
 from .settings import SETTINGS
 from .summary import SUMMARY
@@ -597,6 +597,15 @@ class Project(QObject):
     def __on_project_changed(self):
         self.__isChanged = True
         self.titleChanged.emit(self.title())
+
+    def pinIp(self) -> IpType | None:
+        pinInstance = SUMMARY.projectSummary().pinInstance()
+        ips = IP.projectIps()
+        if pinInstance in ips:
+            return ips[pinInstance]
+        else:
+            logger.error(f"invalid pin instance: {pinInstance}!")
+            return None
 
 
 PROJECT = Project()
