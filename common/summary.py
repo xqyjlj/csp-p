@@ -380,7 +380,9 @@ class Summary:
     def projectSummary(self) -> SummaryType:
         return self.getSummary(self.__vendor, self.__name)
 
-    def findPinBySignal(self, signal: str, summary: SummaryType = None) -> list[str]:
+    def findPinBySignal(
+        self, signal: str, summary: SummaryType | None = None
+    ) -> list[str]:
         if summary is None:
             summary = self.projectSummary()
         pins = []

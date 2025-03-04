@@ -22,27 +22,27 @@
 #
 
 parameters:
-  geehy.crc_control_crc_state_t:
+  geehy.crc_enabled_t:
     type: enum
     values:
-      geehy.crc_control_crc_state_disable:
+      geehy.crc_disabled:
         comment:
           zh_CN: 关闭
           en: Disable
-      geehy.crc_control_crc_state_crc_activate:
+      geehy.crc_enabled:
         comment:
-          zh_CN: Activated
-          en: Activated
-    default: geehy.crc_control_crc_state_disable
+          zh_CN: 使能
+          en: Enable
+    default: geehy.crc_disabled
     display:
-      zh_CN: CRC_State
-      en: CRC_State
+      zh_CN: CRC
+      en: CRC
     description:
-      zh_CN: CRC_State
-      en: CRC_State
+      zh_CN: CRC
+      en: CRC
     visible: true
     readonly: false
 controls:
-  geehy.crc_control_crc_state_t: {}
+  geehy.crc_enabled_t: {}
 modes: {}
-activated: (${INSTANCE}.geehy.crc_control_crc_state_t != 'geehy.crc_control_crc_state_disable')
+activated: (${INSTANCE}.geehy.crc_enabled_t != 'geehy.crc_disabled')

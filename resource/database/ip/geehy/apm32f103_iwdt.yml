@@ -25,41 +25,41 @@ parameters:
   geehy.iwdt_prescaler_t:
     type: enum
     values:
-      geehy.iwdt_prescaler_iwdg_prescaler_4:
+      geehy.iwdt_prescaler_4:
         comment:
           zh_CN: "4"
           en: "4"
-      geehy.iwdt_prescaler_iwdg_prescaler_8:
+      geehy.iwdt_prescaler_8:
         comment:
           zh_CN: "8"
           en: "8"
-      geehy.iwdt_prescaler_iwdg_prescaler_16:
+      geehy.iwdt_prescaler_16:
         comment:
           zh_CN: "16"
           en: "16"
-      geehy.iwdt_prescaler_iwdg_prescaler_32:
+      geehy.iwdt_prescaler_32:
         comment:
           zh_CN: "32"
           en: "32"
-      geehy.iwdt_prescaler_iwdg_prescaler_64:
+      geehy.iwdt_prescaler_64:
         comment:
           zh_CN: "64"
           en: "64"
-      geehy.iwdt_prescaler_iwdg_prescaler_128:
+      geehy.iwdt_prescaler_128:
         comment:
           zh_CN: "128"
           en: "128"
-      geehy.iwdt_prescaler_iwdg_prescaler_256:
+      geehy.iwdt_prescaler_256:
         comment:
           zh_CN: "256"
           en: "256"
-    default: geehy.iwdt_prescaler_iwdg_prescaler_4
+    default: geehy.iwdt_prescaler_4
     display:
-      zh_CN: IWDG counter clock prescaler
-      en: IWDG counter clock prescaler
+      zh_CN: 预分频器
+      en: Clock prescaler
     description:
-      zh_CN: IWDG counter clock prescaler
-      en: IWDG counter clock prescaler
+      zh_CN: IWDT 时钟预分频器
+      en: IWDT counter clock prescaler
     visible: true
     readonly: false
   geehy.iwdt_reload_t:
@@ -68,38 +68,38 @@ parameters:
     max: 4095
     min: 0
     display:
-      zh_CN: IWDG down-counter reload value
-      en: IWDG down-counter reload value
+      zh_CN: 重装载值
+      en: Down-counter reload value
     description:
-      zh_CN: IWDG down-counter reload value
-      en: IWDG down-counter reload value
+      zh_CN: IWDT 自动重装载值（向下计数）
+      en: IWDT down-counter reload value
     visible: true
     readonly: false
-  geehy.iwdt_control_iwdg_state_t:
+  geehy.iwdt_enabled_t:
     type: enum
     values:
-      geehy.iwdt_control_iwdg_state_disable:
+      geehy.iwdt_disabled:
         comment:
           zh_CN: 关闭
           en: Disable
-      geehy.iwdt_control_iwdg_state_iwdg_activate:
+      geehy.iwdt_enabled:
         comment:
-          zh_CN: Activated
-          en: Activated
-    default: geehy.iwdt_control_iwdg_state_disable
+          zh_CN: 使能
+          en: Enable
+    default: geehy.iwdt_disabled
     display:
-      zh_CN: IWDG_State
-      en: IWDG_State
+      zh_CN: IWDT
+      en: IWDT
     description:
-      zh_CN: IWDG_State
-      en: IWDG_State
+      zh_CN: IWDT
+      en: IWDT
     visible: true
     readonly: false
 controls:
-  geehy.iwdt_control_iwdg_state_t: {}
+  geehy.iwdt_enabled_t: {}
 modes:
-  - condition: (${INSTANCE}.geehy.iwdt_control_iwdg_state_t == 'geehy.iwdt_control_iwdg_state_iwdg_activate')
+  - condition: (${INSTANCE}.geehy.iwdt_enabled_t == 'geehy.iwdt_disabled')
     content:
       geehy.iwdt_prescaler_t: {}
       geehy.iwdt_reload_t: {}
-activated: (${INSTANCE}.geehy.iwdt_control_iwdg_state_t != 'geehy.iwdt_control_iwdg_state_disable')
+activated: (${INSTANCE}.geehy.iwdt_enabled_t != 'geehy.iwdt_disabled')

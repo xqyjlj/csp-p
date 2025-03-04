@@ -213,11 +213,25 @@ class IpType(QObject):
 
         @property
         def max(self) -> float:
-            return self.__data.get("max", -1)
+            value = self.__data.get("max", -1)
+            if isinstance(value, str):
+                value = Express.floatExpr(
+                    value.replace("${INSTANCE}", self.instance()),
+                    VALUE_HUB.values(),
+                    {},
+                )
+            return value
 
         @property
         def min(self) -> float:
-            return self.__data.get("min", -1)
+            value = self.__data.get("min", -1)
+            if isinstance(value, str):
+                value = Express.floatExpr(
+                    value.replace("${INSTANCE}", self.instance()),
+                    VALUE_HUB.values(),
+                    {},
+                )
+            return value
 
         # endregion
 
@@ -370,6 +384,26 @@ class IpType(QObject):
         def userData(self):
             return self.__userData
 
+    class PinGroupUnitType(QObject):
+        def __init__(self, data: dict, parent: IpType | None):
+            super().__init__(parent)
+            self.__data = data
+
+        def __str__(self) -> str:
+            return json.dumps(self.__data, indent=2, ensure_ascii=False)
+
+        # region getter/setter
+
+        @property
+        def origin(self) -> dict:
+            return self.__data
+
+        @property
+        def default(self) -> bool:
+            return self.__data.get("default", False)
+
+        # endregion
+
     def __init__(self, data: dict, instance="", parent=None):
         super().__init__(parent)
         self.__data = data
@@ -377,6 +411,7 @@ class IpType(QObject):
         self.__controls = None
         self.__pinModes = None
         self.__modes = None
+        self.__pinGroups = None
         self.__activated = None
         self.__instance = instance
 
@@ -474,6 +509,21 @@ class IpType(QObject):
             self.__modesConditions = conditions
             self.__modesDependencies = dependencies
         return self.__modes
+
+    @property
+    def pinGroups(self) -> dict[str, dict[str, dict[str, PinGroupUnitType]]]:
+        # pin:signal:group:unit
+        if self.__pinGroups is None:
+            self.__pinGroups = {}
+            for pinName, signalItem in self.__data.get("pinGroups", {}).items():
+                pin = {}
+                for signalName, groupItem in signalItem.items():
+                    signal = {}
+                    for groupName, unit in groupItem.items():
+                        signal[groupName] = IpType.PinGroupUnitType(unit, self)
+                    pin[signalName] = {}
+                self.__pinGroups[pinName] = pin
+        return self.__pinGroups
 
     @property
     def _activated(self) -> str:
