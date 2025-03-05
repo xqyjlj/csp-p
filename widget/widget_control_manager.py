@@ -81,7 +81,6 @@ class WidgetControlManager(WidgetBaseManager):
                 pins = SUMMARY.findPinBySignal(signal)
                 if len(pins) > 0:
                     pin = pins[0]
-                    print(PROJECT.pinIp().findPinGroups(pin, signal))
                     functionKey = f"pin/{pin}/function"
                     lockedKey = f"pin/{pin}/locked"
                     modeKey = f"pin/{pin}/mode"
@@ -91,3 +90,6 @@ class WidgetControlManager(WidgetBaseManager):
                     PROJECT.project().configs.set(modeKey, cfg.mode)
 
                     SIGNAL_BUS.updatePinTriggered.emit(pin)
+
+                for pin in pins:
+                    print(pin, PROJECT.pinIp().findPinGroups(pin, signal))

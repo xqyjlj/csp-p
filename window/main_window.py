@@ -201,7 +201,7 @@ class SubTabViewWidget(QWidget):
 
         self.vBoxLayout = QVBoxLayout(self)
 
-        self.vBoxLayout.addWidget(self.tabBar, 0, Qt.AlignLeft)
+        self.vBoxLayout.addWidget(self.tabBar, 0, Qt.AlignmentFlag.AlignLeft)
         self.vBoxLayout.addWidget(self.stackedWidget)
         self.vBoxLayout.setContentsMargins(0, 0, 0, 0)
 
