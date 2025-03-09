@@ -528,7 +528,10 @@ class Project(QObject):
             )
             return self.__valid
 
-        for _, group in summary.modules.items():
+        modules = {}
+        modules.update(summary.modules.peripherals)
+        modules.update(summary.modules.middlewares)
+        for _, group in modules.items():
             for name, module in group.items():
                 if module.ip != "":
                     ip = IP.setProjectIp(self.__project.vendor, name, module.ip)

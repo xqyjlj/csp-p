@@ -878,7 +878,7 @@ parameters:
         comment:
           zh_CN: Asynchronous
           en: Asynchronous
-        pins:
+        signals:
           ${INSTANCE}:RX:
             mode: GPIO:InputFloatingAndPullUp
           ${INSTANCE}:TX:
@@ -887,7 +887,7 @@ parameters:
         comment:
           zh_CN: Synchronous
           en: Synchronous
-        pins:
+        signals:
           ${INSTANCE}:CK:
             mode: GPIO:AlternateFunctionPushPull
           ${INSTANCE}:RX:
@@ -898,14 +898,14 @@ parameters:
         comment:
           zh_CN: Single Wire (Half-Duplex)
           en: Single Wire (Half-Duplex)
-        pins:
+        signals:
           ${INSTANCE}:TX:
             mode: GPIO:AlternateFunctionOpenDrain
       geehy.usart_control_mode_multiprocessor_communication:
         comment:
           zh_CN: Multiprocessor Communication
           en: Multiprocessor Communication
-        pins:
+        signals:
           ${INSTANCE}:RX:
             mode: GPIO:InputFloatingAndPullUp
           ${INSTANCE}:TX:
@@ -914,7 +914,7 @@ parameters:
         comment:
           zh_CN: IrDA
           en: IrDA
-        pins:
+        signals:
           ${INSTANCE}:RX:
             mode: GPIO:InputFloatingAndPullUp
           ${INSTANCE}:TX:
@@ -923,7 +923,7 @@ parameters:
         comment:
           zh_CN: LIN
           en: LIN
-        pins:
+        signals:
           ${INSTANCE}:RX:
             mode: GPIO:InputFloatingAndPullUp
           ${INSTANCE}:TX:
@@ -932,14 +932,14 @@ parameters:
         comment:
           zh_CN: SmartCard
           en: SmartCard
-        pins:
+        signals:
           ${INSTANCE}:TX:
             mode: GPIO:AlternateFunctionOpenDrain
       geehy.usart_control_mode_smart_card_with_clock:
         comment:
           zh_CN: SmartCard with Card Clock
           en: SmartCard with Card Clock
-        pins:
+        signals:
           ${INSTANCE}:TX:
             mode: GPIO:AlternateFunctionOpenDrain
           ${INSTANCE}:CK:
@@ -964,21 +964,21 @@ parameters:
         comment:
           zh_CN: CTS Only
           en: CTS Only
-        pins:
+        signals:
           ${INSTANCE}:CTS:
             mode: GPIO:InputFloatingAndPullUp
       geehy.usart_control_hardware_flow_control_rs232_rts_only:
         comment:
           zh_CN: RTS Only
           en: RTS Only
-        pins:
+        signals:
           ${INSTANCE}:RTS:
             mode: GPIO:AlternateFunctionPushPull
       geehy.usart_control_hardware_flow_control_rs232_cts_rts:
         comment:
           zh_CN: CTS/RTS
           en: CTS/RTS
-        pins:
+        signals:
           ${INSTANCE}:CTS:
             mode: GPIO:InputFloatingAndPullUp
           ${INSTANCE}:RTS:

@@ -33,6 +33,7 @@ class SignalBus(QObject):
     packageUpdated = Signal()
     navigationRequested = Signal(str, str)
     updatePinTriggered = Signal(str)
+    highlightPinTriggered = Signal(list)
 
 
 SIGNAL_BUS = SignalBus()

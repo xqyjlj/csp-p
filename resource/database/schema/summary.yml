@@ -88,27 +88,33 @@ properties:
   modules:
     type: object
     additionalProperties: false
-    patternProperties:
-      "^[A-Za-z0-9_\\s+-]+$":
+    properties:
+      peripherals:
         type: object
         additionalProperties: false
         patternProperties:
-          "^[A-Za-z0-9_+-]+$":
+          "^[A-Za-z0-9_\\s+-]+$":
             type: object
-            properties:
-              description:
-                $ref: "#/properties/illustrate"
-              ip:
-                type: string
-                minLength: 1
-              genType:
-                type: array
-                items:
-                  type: string
-                  minLength: 1
-            required:
-              - description
-              # - ip # TODO
+            additionalProperties: false
+            patternProperties:
+              "^[A-Za-z0-9_+-]+$":
+                type: object
+                properties:
+                  description:
+                    $ref: "#/properties/illustrate"
+                  ip:
+                    type: string
+                    minLength: 1
+                  genType:
+                    type: array
+                    items:
+                      type: string
+                      minLength: 1
+                required:
+                  - description
+                  # - ip # TODO
+      middlewares:
+        $ref: "#/properties/modules/properties/peripherals"
   url:
     type: object
     properties:

@@ -47,7 +47,9 @@ class IpTest(unittest.TestCase):
         socs = repository.repository().allSoc()
         for soc in socs:
             summary = SUMMARY.getSummary(soc.vendor, soc.name)
-            modules = summary.modules
+            modules = {}
+            modules.update(summary.modules.peripherals)
+            modules.update(summary.modules.middlewares)
             for _, group in modules.items():
                 for name, module in group.items():
                     if len(module.ip) == 0:

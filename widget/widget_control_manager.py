@@ -60,9 +60,9 @@ class WidgetControlManager(WidgetBaseManager):
         newValue = ip.parameters[param].values.get(new, None)
 
         if oldValue is not None:
-            for name, cfg in oldValue.pins.items():
+            for name, cfg in oldValue.signals.items():
                 signal = name.replace("${INSTANCE}", instance)
-                pins = SUMMARY.findPinBySignal(signal)
+                pins = SUMMARY.findPinsBySignal(signal)
                 if len(pins) > 0:
                     pin = pins[0]
                     functionKey = f"pin/{pin}/function"
@@ -76,9 +76,9 @@ class WidgetControlManager(WidgetBaseManager):
                     SIGNAL_BUS.updatePinTriggered.emit(pin)
 
         if newValue is not None:
-            for name, cfg in newValue.pins.items():
+            for name, cfg in newValue.signals.items():
                 signal = name.replace("${INSTANCE}", instance)
-                pins = SUMMARY.findPinBySignal(signal)
+                pins = SUMMARY.findPinsBySignal(signal)
                 if len(pins) > 0:
                     pin = pins[0]
                     functionKey = f"pin/{pin}/function"

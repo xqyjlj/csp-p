@@ -94,7 +94,7 @@ class IpType(QObject):
                 def real(self) -> str:
                     return self.__data.get("real", "")
 
-            class PinUnitType:
+            class SignalUnitType:
                 def __init__(self, data: dict):
                     self.__data = data
 
@@ -114,7 +114,7 @@ class IpType(QObject):
 
                 self.__comment = None
                 self.__expression = None
-                self.__pins = None
+                self.__signals = None
 
             def __str__(self) -> str:
                 return json.dumps(self.__data, indent=2, ensure_ascii=False)
@@ -138,12 +138,12 @@ class IpType(QObject):
                 return self.__comment
 
             @property
-            def pins(self) -> dict[str, PinUnitType]:
-                if self.__pins is None:
-                    self.__pins = {}
-                    for name, value in self.__data.get("pins", {}).items():
-                        self.__pins[name] = self.PinUnitType(value)
-                return self.__pins
+            def signals(self) -> dict[str, SignalUnitType]:
+                if self.__signals is None:
+                    self.__signals = {}
+                    for name, value in self.__data.get("signals", {}).items():
+                        self.__signals[name] = self.SignalUnitType(value)
+                return self.__signals
 
         def __init__(self, data: dict, parent: IpType | None):
             self.__data = data
@@ -153,6 +153,7 @@ class IpType(QObject):
             self.__description = None
             self.__values = None
             self.__expression = None
+            self.__signals = None
 
         def __str__(self) -> str:
             return json.dumps(self.__data, indent=2, ensure_ascii=False)
@@ -242,6 +243,15 @@ class IpType(QObject):
             if self.__parent is None:
                 return ""
             return self.__parent.instance()
+
+        def signals(self) -> list[str]:
+            if self.__signals is None:
+                signals = []
+                for _, value in self.values.items():
+                    for name, _ in value.signals.items():
+                        signals.append(_getCondition(name, self))
+                self.__signals = sorted(set(signals))
+            return self.__signals
 
     class ControlModeUnitType(QObject):
         conditionUpdated = Signal(bool)
@@ -426,6 +436,8 @@ class IpType(QObject):
         self.__modesConditions: list[IpType.ConditionUnitType] = []
         self.__modesDependencies: list[str] = []
 
+        self.__signals = []
+
         self.__total = None
         self.__total2 = None
 
@@ -433,6 +445,8 @@ class IpType(QObject):
 
     def __str__(self) -> str:
         return json.dumps(self.__data, indent=2, ensure_ascii=False)
+
+    # region getter/setter
 
     @property
     def origin(self) -> dict:
@@ -442,9 +456,12 @@ class IpType(QObject):
     def parameters(self) -> dict[str, ParameterUnitType]:
         if self.__parameters is None:
             self.__parameters = {}
+            signals = []
             for name, param in self.__data.get("parameters", {}).items():
                 if isinstance(param, dict):
-                    self.__parameters[name] = IpType.ParameterUnitType(param, self)
+                    parameter = IpType.ParameterUnitType(param, self)
+                    self.__parameters[name] = parameter
+                    signals.extend(parameter.signals())
                 elif isinstance(param, list):
                     params: list[dict] = param
                     value = None
@@ -456,6 +473,7 @@ class IpType(QObject):
                         _condition = conditionUnit._condition
                         condition = conditionUnit.condition
                         unit = IpType.ParameterUnitType(conditionUnit.content, self)
+                        signals.extend(unit.signals())
                         conditionUnit.setUserData(unit)
                         if _condition == "default":
                             default = unit
@@ -474,6 +492,7 @@ class IpType(QObject):
                     self.__parameters[name] = value
                 else:
                     logger.error(f"Invalid parameter type: {name}")
+            self.__signals = sorted(set(signals))
         return self.__parameters
 
     @property
@@ -536,6 +555,8 @@ class IpType(QObject):
     def activated(self) -> bool:
         return Express.boolExpr(self._activated, VALUE_HUB.values())
 
+    # endregion
+
     # ------------------------------------------------------------------------------------------------------------------
 
     def total(self) -> dict[str, dict[str, str]]:
@@ -568,13 +589,24 @@ class IpType(QObject):
                 results = self.pinGroups[name][signal]
         return results
 
+    def signals(self) -> list[str]:
+        if not self.__signals:
+            self.parameters  # initialize
+        return self.__signals
+
     def _parametersConditions(self) -> dict[str, list[IpType.ConditionUnitType]]:
+        if not self.__parametersConditions:
+            self.parameters  # initialize
         return self.__parametersConditions
 
     def _controlsConditions(self) -> list[IpType.ConditionUnitType]:
+        if not self.__controlsConditions:
+            self.controls  # initialize
         return self.__controlsConditions
 
     def _modesConditions(self) -> list[IpType.ConditionUnitType]:
+        if not self.__modesConditions:
+            self.modes  # initialize
         return self.__modesConditions
 
     def __on_valueHub_itemUpdated(self, keys: list[str], old: object, new: object):

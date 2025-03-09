@@ -1080,7 +1080,7 @@ parameters:
         comment:
           zh_CN: 旁路时钟源
           en: BYPASS Clock Source
-        pins:
+        signals:
           RCM:OSC-IN:
             mode: GPIO:System
           RCM:OSC-OUT:
@@ -1089,7 +1089,7 @@ parameters:
         comment:
           zh_CN: 晶体/陶瓷谐振器
           en: Crystal/Ceramic Resonator
-        pins:
+        signals:
           RCM:OSC-IN:
             mode: GPIO:System
           RCM:OSC-OUT:
@@ -1113,7 +1113,7 @@ parameters:
         comment:
           zh_CN: 旁路时钟源
           en: BYPASS Clock Source
-        pins:
+        signals:
           RCM:OSC32-IN:
             mode: GPIO:System
           RCM:OSC32-OUT:
@@ -1122,7 +1122,7 @@ parameters:
         comment:
           zh_CN: 晶体/陶瓷谐振器
           en: Crystal/Ceramic Resonator
-        pins:
+        signals:
           RCM:OSC32-IN:
             mode: GPIO:System
           RCM:OSC32-OUT:
@@ -1183,7 +1183,7 @@ parameters:
         comment:
           zh_CN: 使能
           en: Enable
-        pins:
+        signals:
           RCM:MCO:
             mode: GPIO:AlternateFunctionPushPull
       geehy.rcm_mco_disabled:

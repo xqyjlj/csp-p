@@ -55,170 +55,185 @@ introduction:
   en: ""
   zh_CN: 具有 512KB Flash和 96MHz CPU的主流 Arm Cortex-M3 超值系列 MCU
 modules:
-  Analog:
-    ADC1:
-      description:
-        en: ""
-        zh_CN: 模数转换器1
-    ADC2:
-      description:
-        en: ""
-        zh_CN: 模数转换器2
-    ADC3:
-      description:
-        en: ""
-        zh_CN: 模数转换器3
+  peripherals:
+    ADC:
+      ADC1:
+        description:
+          en: ""
+          zh_CN: 模数转换器1
+      ADC2:
+        description:
+          en: ""
+          zh_CN: 模数转换器2
+      ADC3:
+        description:
+          en: ""
+          zh_CN: 模数转换器3
     DAC:
-      description:
-        en: ""
-        zh_CN: 数模转换器
-  Computing:
+      DAC:
+        description:
+          en: ""
+          zh_CN: 数模转换器
     CRC:
-      description:
-        en: ""
-        zh_CN: 循环冗余校验计算单元
-      ip: apm32f103_crc
-  Connectivity:
+      CRC:
+        description:
+          en: ""
+          zh_CN: 循环冗余校验计算单元
+        ip: apm32f103_crc
     CAN:
-      description:
-        en: ""
-        zh_CN: 控制器局域网络
+      CAN:
+        description:
+          en: ""
+          zh_CN: 控制器局域网络
     EMMC:
-      description:
-        en: ""
-        zh_CN: 外部存储器控制器
-    I2C1:
-      description:
-        en: ""
-        zh_CN: 内部集成电路接口1
-    I2C2:
-      description:
-        en: ""
-        zh_CN: 内部集成电路接口2
+      EMMC:
+        description:
+          en: ""
+          zh_CN: 外部存储器控制器
+    I2C:
+      I2C1:
+        description:
+          en: ""
+          zh_CN: 内部集成电路接口1
+      I2C2:
+        description:
+          en: ""
+          zh_CN: 内部集成电路接口2
     SDIO:
-      description:
-        en: ""
-        zh_CN: 安全数字输入输出接口
-    SPI1:
-      description:
-        en: ""
-        zh_CN: 串行外设接口1
-    SPI2:
-      description:
-        en: ""
-        zh_CN: 串行外设接口2
-    SPI3:
-      description:
-        en: ""
-        zh_CN: 串行外设接3
-    UART4:
-      description:
-        en: ""
-        zh_CN: 通用异步收发器4
-      ip: apm32f103_uart
-    UART5:
-      description:
-        en: ""
-        zh_CN: 通用异步收发器5
-      ip: apm32f103_uart
-    USART1:
-      description:
-        en: ""
-        zh_CN: 通用同步异步收发器1
-      ip: apm32f103_usart
-    USART2:
-      description:
-        en: ""
-        zh_CN: 通用同步异步收发器2
-      ip: apm32f103_usart
-    USART3:
-      description:
-        en: ""
-        zh_CN: 通用同步异步收发器3
-      ip: apm32f103_usart
-    USBD:
-      description:
-        en: ""
-        zh_CN: 全速 USBD 接口设备
-  Multimedia:
-    I2S2:
-      description:
-        en: ""
-        zh_CN: 片上音频接口2
-    I2S3:
-      description:
-        en: ""
-        zh_CN: 片上音频接口3
-  System Core:
+      SDIO:
+        description:
+          en: ""
+          zh_CN: 安全数字输入输出接口
+    SPI:
+      SPI1:
+        description:
+          en: ""
+          zh_CN: 串行外设接口1
+      SPI2:
+        description:
+          en: ""
+          zh_CN: 串行外设接口2
+      SPI3:
+        description:
+          en: ""
+          zh_CN: 串行外设接3
+    UART:
+      UART4:
+        description:
+          en: ""
+          zh_CN: 通用异步收发器4
+        ip: apm32f103_uart
+      UART5:
+        description:
+          en: ""
+          zh_CN: 通用异步收发器5
+        ip: apm32f103_uart
+    USART:
+      USART1:
+        description:
+          en: ""
+          zh_CN: 通用同步异步收发器1
+        ip: apm32f103_usart
+      USART2:
+        description:
+          en: ""
+          zh_CN: 通用同步异步收发器2
+        ip: apm32f103_usart
+      USART3:
+        description:
+          en: ""
+          zh_CN: 通用同步异步收发器3
+        ip: apm32f103_usart
+    USB:
+      USBD:
+        description:
+          en: ""
+          zh_CN: 全速 USBD 接口设备
+    I2S:
+      I2S2:
+        description:
+          en: ""
+          zh_CN: 片上音频接口2
+      I2S3:
+        description:
+          en: ""
+          zh_CN: 片上音频接口3
     DMA:
-      description:
-        en: ""
-        zh_CN: 直接存储器存取
+      DMA:
+        description:
+          en: ""
+          zh_CN: 直接存储器存取
     GPIO:
-      description:
-        en: General Purpose Input Output
-        zh_CN: 通用输入/输出引脚
-      ip: apm32f103_gpio
-    IWDT:
-      description:
-        en: ""
-        zh_CN: 独立看门狗定时器
-      ip: apm32f103_iwdt
+      GPIO:
+        description:
+          en: General Purpose Input Output
+          zh_CN: 通用输入/输出引脚
+        ip: apm32f103_gpio
+    WDT:
+      IWDT:
+        description:
+          en: ""
+          zh_CN: 独立看门狗定时器
+        ip: apm32f103_iwdt
+      WWDT:
+        description:
+          en: ""
+          zh_CN: 窗口看门狗定时器
+        ip: apm32f103_wwdt
     NVIC:
-      description:
-        en: ""
-        zh_CN: 嵌套向量中断控制器
+      NVIC:
+        description:
+          en: ""
+          zh_CN: 嵌套向量中断控制器
     RCM:
-      description:
-        en: ""
-        zh_CN: 复位与时钟管理
-      ip: apm32f103_rcm
+      RCM:
+        description:
+          en: ""
+          zh_CN: 复位与时钟管理
+        ip: apm32f103_rcm
     SYS:
-      description:
-        en: ""
-        zh_CN: 系统模块
-    WWDT:
-      description:
-        en: ""
-        zh_CN: 窗口看门狗定时器
-      ip: apm32f103_wwdt
-  Timers:
-    RTC:
-      description:
-        en: ""
-        zh_CN: 实时时钟
-    TMR1:
-      description:
-        en: ""
-        zh_CN: 高级定时器1
-    TMR2:
-      description:
-        en: ""
-        zh_CN: 通用定时器2
-    TMR3:
-      description:
-        en: ""
-        zh_CN: 通用定时器3
-    TMR4:
-      description:
-        en: ""
-        zh_CN: 通用定时器4
-    TMR5:
-      description:
-        en: ""
-        zh_CN: 通用定时器5
-    TMR6:
-      description:
-        en: ""
-        zh_CN: 基本定时器6
-    TMR7:
-      description:
-        en: ""
-        zh_CN: 基本定时器7
-    TMR8:
-      description:
-        en: ""
-        zh_CN: 高级定时器8
+      SYS:
+        description:
+          en: ""
+          zh_CN: 系统模块
+    TIMER:
+      RTC:
+        description:
+          en: ""
+          zh_CN: 实时时钟
+      TMR1:
+        description:
+          en: ""
+          zh_CN: 高级定时器1
+      TMR2:
+        description:
+          en: ""
+          zh_CN: 通用定时器2
+      TMR3:
+        description:
+          en: ""
+          zh_CN: 通用定时器3
+      TMR4:
+        description:
+          en: ""
+          zh_CN: 通用定时器4
+      TMR5:
+        description:
+          en: ""
+          zh_CN: 通用定时器5
+      TMR6:
+        description:
+          en: ""
+          zh_CN: 基本定时器6
+      TMR7:
+        description:
+          en: ""
+          zh_CN: 基本定时器7
+      TMR8:
+        description:
+          en: ""
+          zh_CN: 高级定时器8
+  middlewares: {}
 package: LQFP144
 url:
   en: https://global.geehy.com/product/fifth/APM32F103
